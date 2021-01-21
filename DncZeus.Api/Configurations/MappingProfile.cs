@@ -29,11 +29,12 @@ namespace DncZeus.Api.Configurations
             CreateMap<DncUser, UserJsonModel>();
             CreateMap<UserCreateViewModel, DncUser>();
             CreateMap<UserEditViewModel, DncUser>();
+            CreateMap<DncUser, UserEditViewModel>();
             #endregion
 
             #region DncRole
             CreateMap<DncRole, RoleJsonModel>();
-            CreateMap<RoleCreateViewModel, DncRole>(); 
+            CreateMap<RoleCreateViewModel, DncRole>();
             #endregion
 
             #region DncMenu
@@ -45,16 +46,17 @@ namespace DncZeus.Api.Configurations
 
             #region DncIcon
             CreateMap<DncIcon, IconCreateViewModel>();
+            CreateMap<DncIcon, IconJsonModel>();
             CreateMap<IconCreateViewModel, DncIcon>();
             #endregion
 
             #region DncPermission
             CreateMap<DncPermission, PermissionJsonModel>()
-                .ForMember(d=>d.MenuName,s=>s.MapFrom(x=>x.Menu.Name))
+                .ForMember(d => d.MenuName, s => s.MapFrom(x => x.Menu.Name))
                 .ForMember(d => d.PermissionTypeText, s => s.MapFrom(x => x.Type.ToString()));
             CreateMap<PermissionCreateViewModel, DncPermission>();
             CreateMap<PermissionEditViewModel, DncPermission>();
-            CreateMap<DncPermission,PermissionEditViewModel>();
+            CreateMap<DncPermission, PermissionEditViewModel>();
             #endregion
         }
     }
